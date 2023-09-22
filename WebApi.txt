@@ -1,0 +1,26 @@
+Package Manager Concole:
+
+Invoke-RestMethod https://localhost:7249/api/User -Method GET
+Invoke-RestMethod https://localhost:7249/api/Artist -Method GET
+Invoke-RestMethod https://localhost:7249/api/Song -Method GET
+Invoke-RestMethod https://localhost:7249/api/Style -Method GET
+---------------------------------
+Invoke-RestMethod https://localhost:7249/api/User/15 -Method DELET
+Invoke-RestMethod https://localhost:7249/api/Artist/2 -Method DELET
+Invoke-RestMethod https://localhost:7249/api/Song/2 -Method DELET
+Invoke-RestMethod https://localhost:7249/api/Style/2 -Method DELET
+---------------------------------------
+
+Invoke-RestMethod https://localhost:7249/api/Style -Method POST -Body(@{Name="rock-n-roll"}|ConvertTo-Json) -ContentType "application/json;charset=utf-8"
+
+Invoke-RestMethod https://localhost:7249/api/Artist -Method POST -Body(@{Name="jazz";photo="/Photos/Bob_Marley_photo.jpg"}|ConvertTo-Json) -ContentType "application/json;charset=utf-8"
+
+Invoke-RestMethod https://localhost:7249/api/Song -Method POST -Body(@{Name="jazz";file="/Photos/Bob_Marley_photo.jpg";artist="Okean Elzy";style="pop";Year="2000";Album="Star";text="a*a*a*a*a"}|ConvertTo-Json) -ContentType "application/json;charset=utf-8"
+-------------------------------------------------------
+Invoke-RestMethod https://localhost:7249/api/Song -Method PUT -Body(@{Id=3025;Name="jazz";file="/Photos/Bob_Marley_photo.jpg";artist="Okean Elzy";style="pop";Year="2000";Album="Star";text="a1ga1ga1ga1g1a"}|ConvertTo-Json) -ContentType "application/json;charset=utf-8"
+
+Invoke-RestMethod https://localhost:7249/api/Style -Method PUT -Body(@{Id=10;Name="rock-n-roll!!!"}|ConvertTo-Json) -ContentType "application/json;charset=utf-8"
+
+Invoke-RestMethod https://localhost:7249/api/Artist -Method PUT -Body(@{Id=2014;Name="jazz";photo="/Photos/Bob_Marley_photo.jpg"}|ConvertTo-Json) -ContentType "application/json;charset=utf-8"
+
+
