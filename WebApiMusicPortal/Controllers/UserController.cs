@@ -20,6 +20,16 @@ namespace WebApiMusicPortal.Controllers
         {
             return await _context.Users.ToListAsync();
         }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUser(int id)
+        {
+            var user = await _context.Users.SingleOrDefaultAsync(m => m.Id == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return new ObjectResult(user);
+        }
         [HttpPut]
         public async Task<ActionResult<User>> PutUser(User user)
         {

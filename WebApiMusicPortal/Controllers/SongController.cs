@@ -23,7 +23,12 @@ namespace WebApiMusicPortal.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Song>> GetSong(int id)
         {
-            return await _context.Songs.Include((p) => p.artist).Include((p) => p.style).SingleOrDefaultAsync(m => m.Id == id);
+            var song= await _context.Songs.Include((p) => p.artist).Include((p) => p.style).SingleOrDefaultAsync(m => m.Id == id);
+            if (song == null)
+            {
+                return NotFound();
+            }
+            return new ObjectResult(song);
         }
         [HttpPut]
         public async Task<ActionResult<Song>> PutSong(DopSong s)

@@ -23,7 +23,12 @@ namespace WebApiMusicPortal.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Artist>> GetStyle(int id)
         {
-            return await _context.Artists.SingleOrDefaultAsync(m => m.Id == id);
+            var artist= await _context.Artists.SingleOrDefaultAsync(m => m.Id == id);
+            if (artist == null)
+            {
+                return NotFound();
+            }
+            return new ObjectResult(artist);
         }
         [HttpPut]
         public async Task<ActionResult<Artist>> PutArtist(Artist artist)

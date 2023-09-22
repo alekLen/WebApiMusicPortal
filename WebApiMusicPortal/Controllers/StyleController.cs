@@ -23,7 +23,12 @@ namespace WebApiMusicPortal.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Style>> GetStyle(int id)
         {
-            return await _context.Styles.SingleOrDefaultAsync(m => m.Id == id);
+            var style = await _context.Styles.SingleOrDefaultAsync(m => m.Id == id);
+            if (style == null)
+            {
+                return NotFound();
+            }
+            return new ObjectResult(style);
         }
         [HttpPut]
         public async Task<ActionResult<Style>> PutStyle(Style style)
